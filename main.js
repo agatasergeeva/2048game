@@ -183,14 +183,12 @@
   }
 
   function restore(snap){
-    state.grid = deepCopy(snap.grid);
-    state.score = snap.score;
+    state.grid = deepCopy(snap.grid); 
+    state.score = snap.score; 
     state.idCounter = snap.idCounter;
-
-    tilesMap = new Map(JSON.parse(snap.tiles));
+    tilesMap = new Map(JSON.parse(snap.tiles)); 
 
     renderTiles();
-
     updateUI();
   }
 
@@ -274,7 +272,6 @@
 
     state.history.push(prev);
     $('#undoBtn').disabled = state.history.length===0;
-    $('#undoBtnMobile').disabled = $('#undoBtn').disabled;
 
     tilesMap = newTiles;
     renderTiles(new Set(), mergesToAnimate);
@@ -300,8 +297,7 @@
     state.idCounter=1;
     tilesMap = new Map(); 
     renderTiles();
-    $('#undoBtn').disabled = true; 
-    $('#undoBtnMobile').disabled = true;
+    $('#undoBtn').disabled = true;
     const start = 1 + rand(3); 
     spawn(start); 
     updateUI();
@@ -350,8 +346,7 @@
     $('#saveBlock').classList.remove('hidden'); 
     $('#savedMsg').classList.add('hidden');
     $('#gameOver').classList.add('show');
-    $('#undoBtn').disabled = true; 
-    $('#undoBtnMobile').disabled = true;
+    $('#undoBtn').disabled = true;
   }
 
   function saveResult(){
@@ -364,9 +359,7 @@
       date: new Date().toISOString()
     });
 
-
     list.sort((a, b) => b.score - a.score);
-
     localStorage.setItem(LKEY, JSON.stringify(list.slice(0,10)));
 
     $('#saveBlock').classList.add('hidden');
@@ -421,11 +414,6 @@
     reset(); 
   });
   $('#undoBtn').addEventListener('click', ()=>undo());
-  $('#undoBtnMobile').addEventListener('click', ()=>undo());
-  $('#mobileCtrls').addEventListener('click', e=>{ 
-    const b=e.target.closest('button[data-dir]'); 
-    if(b) move(b.dataset.dir); 
-  });
 
   (function enableSwipe(){
     let sx=0, sy=0, dx=0, dy=0, touching=false;
@@ -457,8 +445,7 @@
     const snap=state.history.pop(); 
     if(!snap) return; 
     restore(snap); 
-    $('#undoBtn').disabled = state.history.length===0; 
-    $('#undoBtnMobile').disabled = $('#undoBtn').disabled; 
+    $('#undoBtn').disabled = state.history.length===0;
   }
 
   $$('.tab').forEach(t=>t.addEventListener('click', ()=>{
@@ -467,7 +454,6 @@
     const id=t.dataset.section; 
     $$('.section').forEach(s=>s.classList.remove('active')); 
     $('#'+id).classList.add('active');
-    $('#mobileCtrls').style.visibility = (id==='game') ? 'visible' : 'hidden';
     fitBoardToViewport();
   }));
 
