@@ -25,7 +25,6 @@
   const tilesLayer = $('#tiles');
   const scoreEl    = $('#score');
   const bestEl     = $('#best');
-
   const headerEl = document.querySelector('header');
   const tabsEl   = document.querySelector('.tabs');
   const ctrlsEl  = document.querySelector('#game .controls');
@@ -60,13 +59,10 @@
       requestAnimationFrame(() => renderTiles(animateNewIds, mergeIds));
       return;
     }
-
     clearNode(tilesLayer);
-
     tilesMap.forEach((t, id) => {
       const el = document.createElement('div');
       el.className = tileClass(t.value);
-
       const { left, top } = pos(t.x, t.y);
 
       if (animateNewIds.has(id)) {
@@ -102,7 +98,6 @@
     const margins = 60; 
     const availH = window.innerHeight - topH - margins;
     const availW = window.innerWidth - 40;
-
     const size = Math.max(260, Math.min(520, Math.min(availH, availW)));
     document.documentElement.style.setProperty('--boardSize', size + 'px');
 
@@ -187,7 +182,6 @@
     state.score = snap.score; 
     state.idCounter = snap.idCounter;
     tilesMap = new Map(JSON.parse(snap.tiles)); 
-
     renderTiles();
     updateUI();
   }
@@ -275,12 +269,12 @@
 
     tilesMap = newTiles;
     renderTiles(new Set(), mergesToAnimate);
-
-    const addCount = Math.random()<0.3?2:1;
-    spawn(addCount);
-
-    updateUI();
-    if(!canMove()) gameOver();
+    requestAnimationFrame(() => {
+      const addCount = Math.random() < 0.3 ? 2 : 1;
+      spawn(addCount);           
+      updateUI();
+      if (!canMove()) gameOver();
+    });
   }
 
   function updateUI(){ 
