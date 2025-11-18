@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2048</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>2048</h1>
+      <div class="scoreboard">
+        <div class="score"><div class="label">Очки</div><div class="value" id="score">0</div></div>
+        <div class="best"><div class="label">Рекорд</div><div class="value" id="best">0</div></div>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button class="tab active" data-section="game">Игра</button>
+      <button class="tab" data-section="leaders">Таблица лидеров</button>
+    </div>
+
+    <section id="game" class="section active">
+      <div class="controls">
+        <button id="undoBtn" class="ghost" disabled>↶ Шаг назад</button>
+        <button id="restartBtn">⟲ Начать заново</button>
+      </div>
+
+      <div class="board-wrap">
+        <div id="board" class="board" aria-label="Игровое поле 4x4" role="application"></div>
+        <div id="tiles" class="tiles" aria-hidden="true"></div>
+      </div>
+
+      <div class="mobile-controls" id="mobileCtrls">
+        <div></div>
+        <button data-dir="up">↑</button>
+        <div></div>
+        <button data-dir="left">←</button>
+        <button data-dir="down">↓</button>
+        <button data-dir="right">→</button>
+        <button class="wide ghost" id="undoBtnMobile">↶ Шаг назад</button>
+      </div>
+    </section>
+
+    <section id="leaders" class="section">
+      <h2>Топ рекордов</h2>
+      <p class="muted">Хранится в <code>localStorage</code>вашего браузера.</p>
+      <table>
+        <thead><tr><th>#</th><th>Имя</th><th>Очки</th><th>Дата</th></tr></thead>
+        <tbody id="leaderRows"></tbody>
+      </table>
+    </section>
+  </div>
+
+
+  <div class="overlay" id="gameOver">
+    <div class="modal">
+      <h3>Игра окончена</h3>
+      <p>Вы набрали <b id="finalScore">0</b> очков.</p>
+      <div id="saveBlock" class="row">
+        <input id="playerName" type="text" placeholder="Ваше имя" maxlength="30" />
+        <button id="saveScore">Сохранить результат</button>
+      </div>
+      <p id="savedMsg" class="hidden">Ваша запись сохранена ✅</p>
+      <div class="row" style="margin-top:8px">
+        <button id="againBtn">⟲ Начать заново</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
