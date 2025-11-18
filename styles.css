@@ -138,7 +138,7 @@ button.ghost {
   display:grid;
   grid-template-columns:repeat(4,1fr);
   grid-template-rows:repeat(4,1fr);
-  gap:12px;                
+  gap:12px;               
 }
 
 .cell {
@@ -155,7 +155,7 @@ button.ghost {
 
 .tile {
   position:absolute;
-  width:calc((100% - 36px)/4);  /* (4 клетки, 3 промежутка по 12px) */
+  width:calc((100% - 36px)/4);  
   height:calc((100% - 36px)/4);
   border-radius:8px;
   display:flex;
@@ -283,35 +283,6 @@ input[type="text"] {
   display:none !important;
 }
 
-.mobile-controls {
-  margin-top:12px;
-  width:100%;
-  max-width:var(--boardSize);
-  display:none;                    
-  grid-template-columns:repeat(3,1fr);
-  grid-template-rows:repeat(3,48px);
-  gap:8px;
-  visibility:visible;             
-}
-
-.mobile-controls button {
-  cursor:pointer;
-  border:none;
-  border-radius:10px;
-  background:var(--btn);
-  color:var(--btn-text);
-  font-weight:700;
-  font-size:20px;
-}
-
-.mobile-controls button:disabled {
-  opacity:.5;
-  cursor:not-allowed;
-}
-
-.mobile-controls .wide {
-  grid-column:1 / 4;
-}
 
 @media (max-width:768px) {
   :root {
@@ -329,10 +300,6 @@ input[type="text"] {
 
   .scoreboard {
     margin-left:0;
-  }
-
-  .mobile-controls {
-    display:grid;                
   }
 }
 
