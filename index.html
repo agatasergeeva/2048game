@@ -11,64 +11,88 @@
     <header>
       <h1>2048</h1>
       <div class="scoreboard">
-        <div class="score"><div class="label">Очки</div><div class="value" id="score">0</div></div>
-        <div class="best"><div class="label">Рекорд</div><div class="value" id="best">0</div></div>
+        <div class="score">
+          <div class="label">Очки</div>
+          <div class="value" id="score">0</div>
+        </div>
+        <div class="best">
+          <div class="label">Рекорд</div>
+          <div class="value" id="best">0</div>
+        </div>
       </div>
     </header>
 
     <div class="tabs">
-      <button class="tab active" data-section="game">Игра</button>
-      <button class="tab" data-section="leaders">Таблица лидеров</button>
+      <button class="tab active" data-section="game" type="button">Игра</button>
+      <button class="tab" data-section="leaders" type="button">Таблица лидеров</button>
     </div>
 
     <section id="game" class="section active">
       <div class="controls">
-        <button id="undoBtn" class="ghost" disabled>↶ Шаг назад</button>
-        <button id="restartBtn">⟲ Начать заново</button>
+        <button id="undoBtn" class="ghost" type="button" disabled>Шаг назад</button>
+        <button id="restartBtn" type="button">Начать заново</button>
       </div>
 
       <div class="board-wrap">
-        <div id="board" class="board" aria-label="Игровое поле 4x4" role="application"></div>
+        <div
+          id="board"
+          class="board"
+          aria-label="Игровое поле 4x4"
+          role="application"
+        ></div>
         <div id="tiles" class="tiles" aria-hidden="true"></div>
       </div>
 
       <div class="mobile-controls" id="mobileCtrls">
         <div></div>
-        <button data-dir="up">↑</button>
+        <button data-dir="up" type="button">↑</button>
         <div></div>
-        <button data-dir="left">←</button>
-        <button data-dir="down">↓</button>
-        <button data-dir="right">→</button>
-        <button class="wide ghost" id="undoBtnMobile">↶ Шаг назад</button>
+        <button data-dir="left" type="button">←</button>
+        <button data-dir="down" type="button">↓</button>
+        <button data-dir="right" type="button">→</button>
+        <button class="wide ghost" id="undoBtnMobile" type="button">Шаг назад</button>
       </div>
     </section>
 
     <section id="leaders" class="section">
-      <h2>Топ рекордов</h2>
-      <p class="muted">Хранится в <code>localStorage</code>вашего браузера.</p>
+      <h2>Топ-10 рекордов</h2>
       <table>
-        <thead><tr><th>#</th><th>Имя</th><th>Очки</th><th>Дата</th></tr></thead>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Имя</th>
+            <th>Очки</th>
+            <th>Дата</th>
+          </tr>
+        </thead>
         <tbody id="leaderRows"></tbody>
       </table>
     </section>
   </div>
 
-
   <div class="overlay" id="gameOver">
     <div class="modal">
       <h3>Игра окончена</h3>
-      <p>Вы набрали <b id="finalScore">0</b> очков.</p>
+      <p>
+        Вы набрали <b id="finalScore">0</b> очков.
+      </p>
       <div id="saveBlock" class="row">
-        <input id="playerName" type="text" placeholder="Ваше имя" maxlength="30" />
-        <button id="saveScore">Сохранить результат</button>
+        <input
+          id="playerName"
+          type="text"
+          placeholder="Ваше имя"
+          maxlength="30"
+          autocomplete="off"
+        />
+        <button id="saveScore" type="button">Сохранить результат</button>
       </div>
-      <p id="savedMsg" class="hidden">Ваша запись сохранена ✅</p>
+      <p id="savedMsg" class="hidden">Ваша запись сохранена</p>
       <div class="row" style="margin-top:8px">
-        <button id="againBtn">⟲ Начать заново</button>
+        <button id="againBtn" type="button">Начать заново</button>
       </div>
     </div>
   </div>
-
+  
   <script src="main.js"></script>
 </body>
 </html>
